@@ -1,0 +1,57 @@
+.newCardInputContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 7%;
+    background-color: transparent;
+    gap: 10px;
+    z-index: 100;
+    bottom: 5%;
+    width: 100%;
+}
+
+.newCardInputForm {
+    padding: 10px 20px;
+    border-radius: 13px;
+    background-color: var(--gray);
+}
+
+.newCardInputForm input {
+    width: 35vw;
+    font-size: 20px;
+    border-radius: 13px;
+    border: none;
+    padding: 8px 12px;
+    background-color: var(--gray);
+    transition: all 0.2s;
+}
+
+.newCardInputForm input:hover {
+    outline: 1px solid var(--themeGreen);
+    box-shadow: 0px 0px 50px 0px rgba(17, 255, 176, 0.168);
+}
+
+.newCardInputForm input:focus {
+    outline: 1px solid var(--offGreen);
+    box-shadow: 0px 0px 50px 0px rgba(17, 255, 176, 0.168);
+}
+
+.newCardInputForm i {
+    font-size: 22px;
+    font-weight: 100;
+    padding: 5px 6px;
+    margin-left: 5px;
+    color: var(--white);
+    background-color: transparent;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.newCardInputForm i:hover {
+    color: var(--themeGreen);
+    rotate: 180deg;
+    outline: 1px solid var(--themeGreen);
+    box-shadow: 0px 0px 50px 0px rgba(17, 255, 176, 0.168);
+}

@@ -1,0 +1,68 @@
+.menuSection {
+  background-color: var(--backGround);
+  max-width: 25%;
+  height: 100vh;
+  z-index: 110;
+  position: relative;
+  padding: 0px 0px;
+  border-right: 1px solid var(--gray);
+}
+
+img {
+  z-index: 2222;
+}
+
+.hideMenuBtn {
+  position: absolute;
+  right: -20px;
+  bottom: 5px;
+  z-index: 111;
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s;
+  color: var(--offWhite);
+}
+
+.hideMenuBtn:hover {
+  color: var(--white);
+  font-size: 16px;
+  animation: hoverHideBtn 0.5s infinite alternate;
+}
+
+@keyframes hoverHideBtn {
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(5px);
+  }
+}
+
+.menuSection.hide {
+  display: none;
+}
+
+.addJustSizeBar {
+  width: 15px;
+  height: 100%;
+  border-left: 1px solid transparent;
+  position: absolute;
+  right: -15px;
+  top: 0px;
+  cursor: col-resize;
+}
+
+.addJustSizeBar:hover {
+  border-left: 1px solid var(--offWhite);
+}
+
+.backgroundToCancel {
+  background-color: transparent;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 200;
+  width: 100vw;
+  height: 100vh;
+}

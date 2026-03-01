@@ -1,0 +1,351 @@
+.card {
+  padding: 20px;
+  padding-top: 0;
+  padding-bottom: 15px;
+  border-radius: 13px;
+  border: 1px solid var(--offWhite);
+  transition:
+    box-shadow 0.5s,
+    border 0.5s,
+    transform 0.05s,
+    rotate 0.3s,
+    width 0.3s,
+    height 0.3s;
+  position: absolute;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--backGround);
+  opacity: 0.8;
+  width: fit-content;
+}
+
+.card h2 {
+  font-weight: 100;
+  color: var(--offWhite);
+  transition: all 0.2s;
+  font-size: 25px;
+  letter-spacing: 2px;
+  text-align: center;
+  cursor: pointer;
+  width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0 20px;
+}
+
+.card:hover h2 {
+  color: var(--themeGreen);
+  font-weight: 500;
+  overflow: scroll;
+  white-space: none;
+  display: inline;
+  text-overflow: clip;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 50px 0px rgba(17, 255, 176, 0.168);
+  border: 1px solid var(--themeGreen);
+  opacity: 0.95;
+}
+
+.card:hover .task.checked {
+  outline: 1px solid var(--themeGreen);
+}
+
+.card:hover .task.checked p {
+  color: var(--themeGreen);
+}
+
+.card:hover button {
+  color: var(--white);
+}
+
+.card:hover .task p {
+  color: var(--white);
+}
+
+.taskList {
+  max-height: 140px;
+  overflow-y: scroll;
+  padding: 0 1px;
+}
+
+.taskList::-webkit-scrollbar {
+  display: none;
+}
+
+.task {
+  list-style: none;
+  display: flex;
+  gap: 2px;
+  padding: 3px 5px 3px 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+
+.task.checked {
+  outline: 1px solid var(--offGreen);
+}
+
+.task.checked p {
+  text-decoration: line-through;
+}
+
+.task p {
+  width: 150px;
+  overflow-wrap: break-word;
+  text-align: start;
+  border-bottom: 1px solid rgba(91, 91, 91, 0.303);
+  padding-left: 10px;
+  transition: all 0.5s;
+  color: var(--offWhite);
+}
+
+.task input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.card input[type="text"] {
+  border: none;
+  padding: 3px 15px;
+  background-color: var(--backGround);
+}
+
+.newTaskInput {
+  text-align: center;
+  margin: 5px 0 10px 0;
+}
+
+.card:hover .newTaskInput input {
+  outline: 1px solid var(--themeGreen);
+}
+
+.newTaskInput i {
+  color: var(--offWhite);
+  cursor: pointer;
+  margin: 0 5px;
+  margin-left: 10px;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+.card:hover .newTaskInput i {
+  color: var(--white);
+}
+
+.newTaskInput i:hover {
+  color: var(--themeGreen);
+}
+
+.newTaskInput i:active {
+  color: var(--white);
+}
+
+.newTaskInput input {
+  border-radius: 5px;
+  outline: 1px solid var(--offWhite);
+  transition: outline 0.2s;
+  width: 225px;
+}
+
+.card input[type="text"]:hover {
+  outline: 1px solid var(--white);
+}
+
+.card input[type="text"]:focus {
+  outline: 1px solid var(--white);
+}
+
+.task input[type="text"] {
+  padding-left: 0px;
+  font-size: 16.55px;
+  outline: 1px solid var(--white);
+  width: 150px;
+  border-radius: 2px;
+  padding-left: 10px;
+}
+
+.task.checked input[type="text"] {
+  text-decoration: line-through;
+  color: var(--themeGreen);
+}
+
+.taskContent {
+  padding: 0 10px;
+}
+
+.card button {
+  background-color: transparent;
+  transition: all 0.2s;
+  padding: 5px 5px;
+  border-radius: 5px;
+  margin-left: 2px;
+  line-height: 100%;
+  color: var(--offWhite);
+  cursor: pointer;
+}
+
+.card button:hover {
+  box-shadow: 0px 0px 10px 0px var(--themeGreen);
+}
+
+.task .funcBtnContainer {
+  margin-left: auto;
+}
+
+.task button {
+  background-color: transparent;
+  padding: 5px 10px;
+  transition: all 0.5s;
+  color: var(--offWhite);
+}
+
+.moveBar {
+  height: 15px;
+  width: 80%;
+  border-radius: 0 0 20px 20px;
+  background-color: transparent;
+  border: 1px solid var(--offWhite);
+  border-top: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+
+.card:hover .moveBar {
+  background-color: var(--offGreen);
+  height: 2.5px;
+  width: 50%;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 10px;
+  transform: translateY(5px);
+}
+
+.card:hover .moveBar:hover {
+  background-color: var(--white);
+  box-shadow: 0px 0px 10px 2px rgb(114, 114, 114);
+  height: 4px;
+  width: 55%;
+}
+
+.editTitle i {
+  cursor: pointer;
+  margin-left: 4px;
+  color: var(--offGreen);
+  transition: all 0.2s;
+}
+
+.editTitle i:hover {
+  color: var(--themeGreen);
+}
+
+.editTitle input {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 2px 0;
+  letter-spacing: 3px;
+  background-color: transparent;
+  color: var(--themeGreen);
+  text-align: center;
+  border: none;
+  text-decoration: underline;
+  outline: none;
+}
+
+.editTitle input:focus {
+  outline: none;
+}
+
+.card:hover .editTitle input {
+  box-shadow: none;
+}
+
+.card:hover .editTitle input:hover {
+  outline: none;
+}
+
+.card:hover .editTitle input:focus {
+  outline: none;
+}
+
+.settingGear {
+  position: absolute;
+  bottom: 5px;
+  right: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--offWhite);
+  transition: all 0.3s;
+}
+
+.card:hover .settingGear {
+  rotate: 360deg;
+}
+
+.settingGear:hover {
+  font-size: 18px;
+  color: var(--white);
+}
+
+.settingGear:active {
+  color: var(--themeGreen);
+}
+
+.taskNavBar {
+  position: absolute;
+  right: 5px;
+  top: -2px;
+}
+
+.taskNavBar button {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  padding: 2px;
+  transition: all 0.5s;
+}
+
+.card:hover .taskNavBar button {
+  color: var(--white);
+  padding: 2px;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.card:hover .taskNavBar .deleteCard:hover {
+  color: #ff1919a2;
+}
+
+.card:hover .taskNavBar .hideCard:hover {
+  color: var(--themeGreen);
+}
+
+.expandBtn {
+  font-size: 13px;
+  rotate: -135deg;
+  transform: translate(-5px, 5px);
+  transition: all 0.2s;
+}
+
+.expandBtn:hover {
+  font-size: 15px;
+  transform: translate(-5px, 9px);
+}
+
+.mainTaskContent {
+  transition: all 0.5s;
+}
+
+.card.hide .mainTaskContent {
+  overflow-y: hidden;
+  height: 0;
+  animation: hide 0.5s ease-in 1;
+}

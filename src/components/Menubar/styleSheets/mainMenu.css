@@ -1,0 +1,73 @@
+.mainMenu {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.menuHeader {
+  color: var(--themeGreen);
+  border-top: 1px solid var(--gray);
+  padding: 2px 12px;
+  font-weight: 200;
+  font-size: 16px;
+  cursor: default;
+}
+
+.boardMenuItem {
+  font-weight: 200;
+  font-size: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  cursor: pointer;
+  color: var(--offWhite);
+  padding: 5px 15px;
+  margin: 2px 10px;
+  border-radius: 5px;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  transition: all 0.2s;
+}
+
+.boardMenuItem.current {
+  color: var(--white);
+  font-weight: 400;
+  outline: 0.1px solid var(--lightBlack);
+}
+
+.boardMenuItem:hover {
+  color: var(--white);
+  outline: 0.1px solid var(--lightBlack);
+}
+
+.boardMenuItem span {
+  font-size: 16px;
+  margin-right: 20px;
+  color: var(--offWhite);
+}
+
+.boardMenuItem.current span {
+  color: var(--white);
+}
+
+.menuItemExtendBtn {
+  color: transparent;
+  border: none;
+  margin-left: 10px;
+}
+
+/* .menuItemExtendBtn i {
+  background-color: transparent;
+} */
+
+.boardMenuItem.current .menuItemExtendBtn {
+  color: var(--white);
+}
+
+.boardMenuItem:hover .menuItemExtendBtn {
+  color: var(--white);
+}
+
+.boardMenuItem:hover .menuItemExtendBtn:hover {
+  color: var(--themeGreen);
+}

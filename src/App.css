@@ -1,0 +1,13 @@
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.app {
+  display: flex;
+}
+
+.boardsContainer {
+  overflow: scroll;
+  width: 100%;
+  height: 100vh;
+}
