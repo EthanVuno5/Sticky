@@ -3,6 +3,9 @@
 .functionMenu {
   overflow-x: hidden;
   max-height: fit-content;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .functionMenuBtn i {

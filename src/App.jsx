@@ -1,4 +1,7 @@
-import { useState } from "react";
+// create unique id for boards, card, workspace
+// create an emty board, emty card
+
+import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/todo_board/board";
 import Menu from "./components/Menubar/menu";
@@ -6,267 +9,9 @@ export default function App() {
   const boardsData = [
     {
       title: "Board 1",
-      id: 0,
-      type: "note",
-      board: [
-        {
-          id: 0,
-          title: "Task1",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "hello",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "hi",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "halo",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 1,
-          title: "Greetings",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "nihao",
-              checked: false,
-            },
-            {
-              id: 2,
-              title: "chao",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "hola",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "You're welcome",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "bonjour",
-              checked: false,
-            },
-            {
-              id: 2,
-              title: "konichiwa",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "samwanika",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 3,
-          title: "Task3",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "What's up",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "Hey you",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "How have you been",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 4,
-          title: "Task4",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "I'm fine",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "Nice to meet you!",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "Comment cava?",
-              checked: false,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Keep fit",
       id: 1,
       type: "note",
-      board: [
-        {
-          id: 0,
-          title: "Keep busy",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "yeah",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "hi",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "halo",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 1,
-          title: "Greetings",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "nihao",
-              checked: false,
-            },
-            {
-              id: 2,
-              title: "chao",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "Jogging",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "What's up",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "Hey you",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "How have you been",
-              checked: false,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Board 3",
-      id: 2,
-      type: "note",
-      board: [
-        {
-          id: 0,
-          title: "Keep busy",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "yeah",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "hi",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "halo",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 1,
-          title: "Greetings",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "nihao",
-              checked: false,
-            },
-            {
-              id: 2,
-              title: "chao",
-              checked: false,
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "Jogging",
-          coordinates: null,
-          isHide: false,
-          taskList: [
-            {
-              id: 1,
-              title: "What's up",
-              checked: true,
-            },
-            {
-              id: 2,
-              title: "Hey you",
-              checked: false,
-            },
-            {
-              id: 3,
-              title: "How have you been",
-              checked: false,
-            },
-          ],
-        },
-      ],
+      board: [],
     },
   ];
   const users = [
@@ -287,6 +32,8 @@ export default function App() {
   ];
   const [boards, setBoardData] = useState(users[0].workSpace[0].boards);
   const [currentBoardIndex, setCurrenBoardIndex] = useState(0);
+  const newBoardId = Math.random().toString(36) + Date.now().toString(36);
+
   const boardTitle = boards.map((board) => {
     return { title: board.title, id: board.id, type: board.type };
   });
@@ -304,20 +51,24 @@ export default function App() {
   }
   function addNewBoard(boardType) {
     setBoardData([
+      ...boards,
       {
         title: "Untitled",
-        id: boards.length,
+        id: newBoardId,
         type: boardType,
         board: [],
       },
-      ...boards,
     ]);
     setCurrenBoardIndex(0);
   }
-
+  useEffect(() => {
+    console.log("current board id: ", boards[currentBoardIndex].id);
+  }, [boards, currentBoardIndex]);
   function delBoard(boardId) {
-    setBoardData(boards.filter((board) => board.id !== boardId));
-    // setCurrenBoardIndex(boards.findIndex((board) => board.id === boardId));
+    if (boards.length === 1) {
+      addNewBoard("note");
+      // setBoardData(boards.filter((board) => board.id !== boardId));
+    } else setBoardData(boards.filter((board) => board.id !== boardId));
   }
 
   function duplicateBoard(boardId) {
