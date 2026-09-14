@@ -1,17 +1,17 @@
-// create unique id for boards, card, workspace
-// create an emty board, emty card
+// create unique id for card, workspace
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Board from "./components/todo_board/board";
 import Menu from "./components/Menubar/menu";
+import { Cards } from "./dataBase/tasksData";
 export default function App() {
   const boardsData = [
     {
-      title: "Board 1",
-      id: 1,
+      title: "My Board",
+      id: "bID00000b",
       type: "note",
-      board: [],
+      board: Cards,
     },
   ];
   const users = [
@@ -20,11 +20,11 @@ export default function App() {
         name: "hieu vu dep zai",
         avatar: "./app",
         key: "1",
-        id: "us100",
+        id: "UID100",
       },
       workSpace: [
         {
-          title: "workSpace1",
+          title: "My Work Space",
           boards: boardsData,
         },
       ],
@@ -32,8 +32,7 @@ export default function App() {
   ];
   const [boards, setBoardData] = useState(users[0].workSpace[0].boards);
   const [currentBoardIndex, setCurrenBoardIndex] = useState(0);
-  const newBoardId = Math.random().toString(36) + Date.now().toString(36);
-
+  const newBoardId = "bID" + Math.random().toString(36).slice(2, 7) + "b";
   const boardTitle = boards.map((board) => {
     return { title: board.title, id: board.id, type: board.type };
   });
@@ -50,32 +49,45 @@ export default function App() {
     setBoardData(copyBoard);
   }
   function addNewBoard(boardType) {
-    setBoardData([
-      ...boards,
+    const newBoards = [
       {
         title: "Untitled",
         id: newBoardId,
         type: boardType,
         board: [],
       },
-    ]);
+      ...boards,
+    ];
+    setBoardData(newBoards);
     setCurrenBoardIndex(0);
   }
-  useEffect(() => {
-    console.log("current board id: ", boards[currentBoardIndex].id);
-  }, [boards, currentBoardIndex]);
+
   function delBoard(boardId) {
+    const newBoards = boards.filter((board) => board.id !== boardId);
     if (boards.length === 1) {
-      addNewBoard("note");
-      // setBoardData(boards.filter((board) => board.id !== boardId));
-    } else setBoardData(boards.filter((board) => board.id !== boardId));
+      newBoards.push({
+        title: "Untitled",
+        id: newBoardId,
+        type: boards.find((board) => board.id === boardId).type,
+        board: [],
+      });
+    }
+    setBoardData(newBoards);
+    setCurrenBoardIndex(0);
   }
 
   function duplicateBoard(boardId) {
+    const copied = boards.find((board) => board.id === boardId);
+    // const reconizerCopiedBoardId = Math.random().toString(36).slice(2, 4);
+
+    // const copiedBoards = boards.filter((board) => board.title === copied.title);
+    // console.log(copiedBoards);
     setBoardData([
       {
-        ...boards.find((board) => board.id === boardId),
-        id: boards.length,
+        ...copied,
+        // title: copied.title + " " + boards.length,
+        // id: newBoardId + reconizerCopiedBoardId,
+        id: newBoardId,
       },
       ...boards,
     ]);
