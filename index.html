@@ -1,17 +1,42 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/sticky.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky</title>
+    <script
+      src="https://kit.fontawesome.com/3b7f857ba5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/sticky.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sticky</title>
-  <script src="https://kit.fontawesome.com/3b7f857ba5.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+      var webSdkScript = document.createElement("script");
+      webSdkScript.src =
+        "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js";
+      document.head.appendChild(webSdkScript);
+      webSdkScript.onload = function () {
+        new CozeWebSDK.WebChatClient({
+          config: {
+            type: "app",
+            appInfo: {
+              appId: "7693562950800752645",
+              workflowId: "7695981905695621173",
+            },
+          },
+          auth: {
+            type: "token",
+            token: "pat_********",
+            onRefreshToken: function () {
+              return "pat_********";
+            },
+          },
+        });
+      };
+    </script>
+  </body>
 </html>
