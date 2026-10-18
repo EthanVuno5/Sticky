@@ -14,5 +14,29 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+      var webSdkScript = document.createElement("script");
+      webSdkScript.src =
+        "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js";
+      document.head.appendChild(webSdkScript);
+      webSdkScript.onload = function () {
+        new CozeWebSDK.WebChatClient({
+          config: {
+            type: "app",
+            appInfo: {
+              appId: "7688701552437428277",
+              workflowId: "7693629198957248517",
+            },
+          },
+          auth: {
+            type: "token",
+            token: "pat_********",
+            onRefreshToken: function () {
+              return "pat_********";
+            },
+          },
+        });
+      };
+    </script>
   </body>
 </html>
