@@ -13,8 +13,8 @@
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
     <script type="text/javascript">
+      const api_key = import.meta.env.VITE_COZE_CHAT_SDK_API_KEY;
       var webSdkScript = document.createElement("script");
       webSdkScript.src =
         "https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.2.0-beta.6/libs/oversea/index.js";
@@ -25,26 +25,14 @@
             type: "app",
             appInfo: {
               appId: "7688701552437428277",
-              workflowId: "7693629198957248517",
+              workflowId: "7698312550904168501",
             },
           },
           auth: {
             type: "token",
-            token: "pat_*****",
-            isIframe: false,
+            token: api_key,
             onRefreshToken: function () {
-              return "pat_*****";
-            },
-          },
-          ui: {
-            asstBtn: {
-              isNeed: true,
-            },
-            header: {
-              isShow: false,
-            },
-            footer: {
-              isShow: false,
+              return api_key;
             },
           },
         });
